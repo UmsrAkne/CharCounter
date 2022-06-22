@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border x:Key="StatusBarContents">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ファイル数 : " />
+                <TextBlock Text="{Binding ExtendFileInfos.Count}" />
+
+                <TextBlock Margin="10,0" Text="/" />
+
+                <TextBlock Text="Indexの最大値 : " />
+                <TextBlock Text="{Binding MaximumIndex}" />
+
+                <TextBlock Margin="10,0" Text="/" />
+
+                <TextBlock Text="無視しているファイル数 : " />
+                <TextBlock Text="{Binding IgnoreFileCount}" />
+
+                <TextBlock Margin="10,0" Text="/" />
+
+                <TextBlock Text="マークしているファイル数 : " />
+                <TextBlock Text="{Binding MarkedFileCount}" />
+
+                <TextBlock Margin="10,0" Text="/" />
+
+                <TextBlock Text="無視しているファイル : " />
+
+                <TextBlock>
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IgnoreFileIsVisible}" Value="True">
+                                    <Setter Property="Text" Value="表示" />
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding IgnoreFileIsVisible}" Value="False">
+                                    <Setter Property="Text" Value="非表示" />
+                                </DataTrigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+
+</ResourceDictionary>

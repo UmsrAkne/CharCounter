@@ -1,0 +1,117 @@
+﻿<Window
+    x:Class="CharCounter.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:m="clr-namespace:CharCounter.Models"
+    xmlns:prism="http://prismlibrary.com/"
+    x:Name="Window"
+    Title="{Binding Title}"
+    Width="800"
+    Height="600"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    AllowDrop="True">
+
+    <i:Interaction.Behaviors>
+        <m:DropBehavior />
+    </i:Interaction.Behaviors>
+
+    <Window.InputBindings>
+        <KeyBinding
+            Key="J"
+            Command="{Binding CursorDownCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="K"
+            Command="{Binding CursorUpCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="U"
+            Command="{Binding CursorPageUpCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="D"
+            Command="{Binding CursorPageDownCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="H"
+            Command="{Binding CursorPageUpCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="L"
+            Command="{Binding CursorPageDownCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="N"
+            Command="{Binding JumpToNextMarkCommand}"
+            CommandParameter="{Binding ElementName=FileListView}" />
+
+        <KeyBinding
+            Key="N"
+            Command="{Binding JumpToPrevMarkCommand}"
+            CommandParameter="{Binding ElementName=FileListView}"
+            Modifiers="Shift" />
+
+        <KeyBinding Key="I" Command="{Binding ToggleIgnoreFileCommand}" />
+
+        <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
+
+        <KeyBinding Key="Return" Command="{Binding PlaySoundCommand}" />
+
+    </Window.InputBindings>
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/StatusBarContent.xaml" />
+                <ResourceDictionary Source="Resources/ListViewTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+        <Menu>
+            <MenuItem Header="表示">
+                <MenuItem Command="{Binding DisplayIgnoreFileCommand}" Header="無視しているファイルを表示" />
+                <MenuItem Command="{Binding HideIgnoreFileCommand}" Header="無視しているファイルを非表示" />
+            </MenuItem>
+
+            <MenuItem Header="編集">
+                <MenuItem Command="{Binding AppendNumberCommand}" Header="全てのファイル先頭に連番をつける" />
+                <MenuItem Command="{Binding AppendNumberWithoutIgnoreFileCommand}" Header="無視ファイル以外の先頭に連番をつける" />
+                <MenuItem Command="{Binding AppendPrefixToIgnoreFilesCommand}" Header="無視ファイルにプレフィックス" />
+            </MenuItem>
+        </Menu>
+
+        <ListView
+            x:Name="FileListView"
+            Grid.Row="1"
+            AlternationCount="2"
+            ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
+            ItemTemplate="{StaticResource ResourceKey=ListViewItemTemplate}"
+            ItemsSource="{Binding ExtendFileInfos}"
+            SelectedIndex="{Binding SelectedFileIndex}"
+            SelectedItem="{Binding SelectedItem}" />
+
+        <StatusBar Grid.Row="2" VerticalAlignment="Bottom">
+            <StatusBarItem Content="{StaticResource ResourceKey=StatusBarContents}" />
+        </StatusBar>
+
+    </Grid>
+</Window>
