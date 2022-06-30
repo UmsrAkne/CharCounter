@@ -62,8 +62,6 @@
 
         <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
 
-        <KeyBinding Key="Return" Command="{Binding PlaySoundCommand}" />
-
     </Window.InputBindings>
 
     <Window.Resources>
@@ -88,14 +86,14 @@
 
         <Menu>
             <MenuItem Header="表示">
-                <MenuItem Command="{Binding DisplayIgnoreFileCommand}" Header="無視しているファイルを表示" />
-                <MenuItem Command="{Binding HideIgnoreFileCommand}" Header="無視しているファイルを非表示" />
+                <MenuItem Command="{Binding DisplayIgnoreFileCommand}" Header="無視している行を表示" />
+                <MenuItem Command="{Binding HideIgnoreFileCommand}" Header="無視している行を非表示" />
             </MenuItem>
 
             <MenuItem Header="編集">
-                <MenuItem Command="{Binding AppendNumberCommand}" Header="全てのファイル先頭に連番をつける" />
-                <MenuItem Command="{Binding AppendNumberWithoutIgnoreFileCommand}" Header="無視ファイル以外の先頭に連番をつける" />
-                <MenuItem Command="{Binding AppendPrefixToIgnoreFilesCommand}" Header="無視ファイルにプレフィックス" />
+                <MenuItem Command="{Binding AppendNumberCommand}" Header="全ての行の先頭に連番をつける" />
+                <MenuItem Command="{Binding AppendNumberWithoutIgnoreFileCommand}" Header="無視している行以外の先頭に連番をつける" />
+                <MenuItem Command="{Binding AppendPrefixToIgnoreFilesCommand}" Header="無視している行にプレフィックス" />
             </MenuItem>
         </Menu>
 
