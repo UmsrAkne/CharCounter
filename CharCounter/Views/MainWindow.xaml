@@ -62,8 +62,6 @@
 
         <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
 
-        <KeyBinding Key="Return" Command="{Binding PlaySoundCommand}" />
-
     </Window.InputBindings>
 
     <Window.Resources>
