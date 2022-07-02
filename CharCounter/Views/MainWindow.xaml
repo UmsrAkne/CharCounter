@@ -103,8 +103,8 @@
             AlternationCount="2"
             ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=ListViewItemTemplate}"
-            ItemsSource="{Binding ExtendFileInfos}"
-            SelectedIndex="{Binding SelectedFileIndex}"
+            ItemsSource="{Binding Texts}"
+            SelectedIndex="{Binding SelectedLineIndex}"
             SelectedItem="{Binding SelectedItem}" />
 
         <StatusBar Grid.Row="2" VerticalAlignment="Bottom">

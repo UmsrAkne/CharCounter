@@ -13,8 +13,8 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="ファイル数 : " />
-                <TextBlock Text="{Binding ExtendFileInfos.Count}" />
+                <TextBlock Text="総行数 : " />
+                <TextBlock Text="{Binding Texts.Count}" />
 
                 <TextBlock Margin="10,0" Text="/" />
 
