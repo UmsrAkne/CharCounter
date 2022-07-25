@@ -1,9 +1,9 @@
-﻿using CharCounter.Views;
-using Prism.Ioc;
-using System.Windows;
-
-namespace CharCounter
+﻿namespace CharCounter
 {
+    using System.Windows;
+    using CharCounter.Views;
+    using Prism.Ioc;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -16,7 +16,6 @@ namespace CharCounter
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
         }
     }
 }

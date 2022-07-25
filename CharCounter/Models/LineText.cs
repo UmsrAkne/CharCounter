@@ -1,7 +1,7 @@
-﻿using Prism.Mvvm;
-
-namespace CharCounter.Models
+﻿namespace CharCounter.Models
 {
+    using Prism.Mvvm;
+
     public class LineText : BindableBase
     {
         private string text;
