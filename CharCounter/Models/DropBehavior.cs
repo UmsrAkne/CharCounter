@@ -1,6 +1,10 @@
 ﻿namespace CharCounter.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
+    using CharCounter.ViewModels;
     using Microsoft.Xaml.Behaviors;
 
     public class DropBehavior : Behavior<Window>
@@ -28,10 +32,11 @@
             // ファイルパスの一覧の配列
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-            // int index = 0;
-            // var fileList = files.OrderBy(p => p).Select(p => new ExtendFileInfo(p) { Index = ++index }).ToList();
+            var texts = System.IO.File.ReadAllLines(files[0])
+                .Select(s => new LineText() { Text = s })
+                .ToList();
 
-            // ((sender as Window).DataContext as MainWindowViewModel).SetFiles(fileList);
+            ((sender as Window).DataContext as MainWindowViewModel).SetTextFile(texts);
         }
 
         private void AssociatedObject_PreviewDragOver(object sender, DragEventArgs e)

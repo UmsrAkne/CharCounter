@@ -172,10 +172,9 @@
         });
 
         // 基本的にビヘイビアから呼び出される
-        public void SetFiles(List<LineText> lines)
+        public void SetTextFile(List<LineText> lines)
         {
             Texts = new ObservableCollection<LineText>(lines);
-            // doubleFileList = new DoubleFileList(files);
 
             MarkedFileCount = 0;
             IgnoreFileCount = 0;
