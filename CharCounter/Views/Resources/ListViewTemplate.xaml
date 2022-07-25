@@ -11,48 +11,18 @@
         <ContentControl Height="{Binding ElementName=Window, Path=DataContext.ListViewItemLineHeight}">
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ElementName=Window, Path=DataContext.PlaySoundCommand}" />
-                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseDoubleClick" />
             </i:Interaction.Triggers>
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="30" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="{Binding Index, Converter={StaticResource ResourceKey=NumberFormatConverter}}" />
 
-                <TextBlock Grid.Column="1">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Playing}" Value="True">
-                                    <Setter Property="Text" Value="▶" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-
-                <TextBlock Grid.Column="2">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Marked}" Value="True">
-                                    <Setter Property="Text" Value="＊" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-
-                <TextBlock Grid.Column="3" Text="{Binding Name}" />
+                <TextBlock Grid.Column="1" Text="{Binding Text}" />
             </Grid>
 
             <ContentControl.Style>

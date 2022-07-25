@@ -172,10 +172,9 @@
         });
 
         // 基本的にビヘイビアから呼び出される
-        public void SetFiles(List<LineText> lines)
+        public void SetTextFile(List<LineText> lines)
         {
             Texts = new ObservableCollection<LineText>(lines);
-            // doubleFileList = new DoubleFileList(files);
 
             MarkedFileCount = 0;
             IgnoreFileCount = 0;
@@ -185,21 +184,14 @@
 
         private void ReIndex()
         {
-            // var index = 1;
+            var index = 1;
 
-            // foreach (var f in Texts)
-            // {
-            //     if (f.Ignore)
-            //     {
-            //         f.Index = 0;
-            //     }
-            //     else
-            //     {
-            //         f.Index = index++;
-            //     }
-            // }
+            foreach (var f in Texts)
+            {
+                f.Index = index++;
+            }
 
-            // MaximumIndex = index - 1;
+            MaximumIndex = index - 1;
         }
 
         private int GetDisplayingItemCount(ListView lv)
