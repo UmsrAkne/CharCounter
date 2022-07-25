@@ -11,9 +11,7 @@
         <ContentControl Height="{Binding ElementName=Window, Path=DataContext.ListViewItemLineHeight}">
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ElementName=Window, Path=DataContext.PlaySoundCommand}" />
-                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseDoubleClick" />
             </i:Interaction.Triggers>
 
             <Grid>
