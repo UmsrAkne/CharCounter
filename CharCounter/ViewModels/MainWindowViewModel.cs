@@ -86,7 +86,7 @@
             // {
             //     SelectedItem.Ignore = !SelectedItem.Ignore;
             //     IgnoreFileCount += SelectedItem.Ignore ? 1 : -1;
-
+            //
             //     if (!IgnoreFileIsVisible)
             //     {
             //         var index = SelectedLineIndex; // Remove を行うとインデックスがリセットされるため変数に保持する。
