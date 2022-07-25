@@ -184,21 +184,14 @@
 
         private void ReIndex()
         {
-            // var index = 1;
+            var index = 1;
 
-            // foreach (var f in Texts)
-            // {
-            //     if (f.Ignore)
-            //     {
-            //         f.Index = 0;
-            //     }
-            //     else
-            //     {
-            //         f.Index = index++;
-            //     }
-            // }
+            foreach (var f in Texts)
+            {
+                f.Index = index++;
+            }
 
-            // MaximumIndex = index - 1;
+            MaximumIndex = index - 1;
         }
 
         private int GetDisplayingItemCount(ListView lv)
