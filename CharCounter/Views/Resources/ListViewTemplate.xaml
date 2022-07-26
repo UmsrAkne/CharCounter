@@ -17,12 +17,15 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="30" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="{Binding Index, Converter={StaticResource ResourceKey=NumberFormatConverter}}" />
 
-                <TextBlock Grid.Column="1" Text="{Binding Text}" />
+                <TextBlock Grid.Column="1" Text="{Binding Counter, Converter={StaticResource ResourceKey=NumberFormatConverter}}" />
+
+                <TextBlock Grid.Column="2" Text="{Binding Text}" />
             </Grid>
 
             <ContentControl.Style>

@@ -19,6 +19,7 @@
         private int ignoreFileCount;
         private int maximumIndex;
         private int markedFileCount;
+        private string searchString;
 
         public MainWindowViewModel()
         {
@@ -47,6 +48,8 @@
         public int MaximumIndex { get => maximumIndex; set => SetProperty(ref maximumIndex, value); }
 
         public int MarkedFileCount { get => markedFileCount; set => SetProperty(ref markedFileCount, value); }
+
+        public string SearchString { get => searchString; set => SetProperty(ref searchString, value); }
 
         public int ListViewItemLineHeight => 15;
 
@@ -168,6 +171,22 @@
             else
             {
                 // ExtendFileInfos = new ObservableCollection<ExtendFileInfo>(doubleFileList.GetExceptedIgnoreFiles());
+            }
+        });
+
+        public DelegateCommand CharCountCommand => new DelegateCommand(() =>
+        {
+            var counter = 0;
+            foreach (var text in Texts)
+            {
+                if (text.Text.Contains(SearchString))
+                {
+                    text.Counter = ++counter;
+                }
+                else
+                {
+                    text.Counter = 0;
+                }
             }
         });
 

@@ -78,6 +78,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
@@ -97,9 +98,19 @@
             </MenuItem>
         </Menu>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding SearchString}" Grid.Column="0"/>
+            <Button Content="検索・カウント" Grid.Column="1" Margin="10,0" Command="{Binding CharCountCommand}"/>
+        </Grid>
+
         <ListView
             x:Name="FileListView"
-            Grid.Row="1"
+            Grid.Row="2"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource ResourceKey=ListViewItemContainerStyle}"
             ItemTemplate="{StaticResource ResourceKey=ListViewItemTemplate}"
@@ -107,7 +118,7 @@
             SelectedIndex="{Binding SelectedLineIndex}"
             SelectedItem="{Binding SelectedItem}" />
 
-        <StatusBar Grid.Row="2" VerticalAlignment="Bottom">
+        <StatusBar Grid.Row="3" VerticalAlignment="Bottom">
             <StatusBarItem Content="{StaticResource ResourceKey=StatusBarContents}" />
         </StatusBar>
 
