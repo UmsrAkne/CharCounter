@@ -17,13 +17,26 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="40" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="{Binding Index, Converter={StaticResource ResourceKey=NumberFormatConverter}}" />
 
-                <TextBlock Grid.Column="1" Text="{Binding Counter, Converter={StaticResource ResourceKey=NumberFormatConverter}}" />
+                <TextBlock Grid.Column="1" Text="{Binding Counter, Converter={StaticResource ResourceKey=NumberFormatConverter}}">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="5,0"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="0000">
+                                    
+                                    <Setter Property="Opacity" Value="0.3"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
 
                 <TextBlock Grid.Column="2" Text="{Binding Text}" />
             </Grid>
