@@ -23,6 +23,11 @@
             CommandParameter="{Binding ElementName=FileListView}"
             Modifiers="Ctrl" />
 
+        <KeyBinding
+            Key="R"
+            Command="{Binding ReloadCommand}"
+            Modifiers="Ctrl" />
+
     </Window.InputBindings>
 
     <Window.Resources>
