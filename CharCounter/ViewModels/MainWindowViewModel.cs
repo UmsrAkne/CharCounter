@@ -152,6 +152,8 @@
 
         public DelegateCommand AppendNumberCommand => new DelegateCommand(() =>
         {
+            Texts.ToList().ForEach(t => t.Text = $"{t.Counter.ToString("0000")},{t.Text}");
+
             // doubleFileList.AppendNumber();
             ReloadCommand.Execute();
         });
