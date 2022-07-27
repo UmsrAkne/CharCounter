@@ -18,55 +18,10 @@
 
     <Window.InputBindings>
         <KeyBinding
-            Key="J"
-            Command="{Binding CursorDownCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="K"
-            Command="{Binding CursorUpCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="U"
-            Command="{Binding CursorPageUpCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="D"
-            Command="{Binding CursorPageDownCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="H"
-            Command="{Binding CursorPageUpCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="L"
-            Command="{Binding CursorPageDownCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="N"
-            Command="{Binding JumpToNextMarkCommand}"
-            CommandParameter="{Binding ElementName=FileListView}" />
-
-        <KeyBinding
-            Key="N"
-            Command="{Binding JumpToPrevMarkCommand}"
-            CommandParameter="{Binding ElementName=FileListView}"
-            Modifiers="Shift" />
-
-        <KeyBinding
             Key="C"
             Command="{Binding CopyToClipboardCommand}"
             CommandParameter="{Binding ElementName=FileListView}"
             Modifiers="Ctrl" />
-
-        <KeyBinding Key="I" Command="{Binding ToggleIgnoreFileCommand}" />
-
-        <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
 
     </Window.InputBindings>
 
@@ -126,7 +81,55 @@
             ItemTemplate="{StaticResource ResourceKey=ListViewItemTemplate}"
             ItemsSource="{Binding Texts}"
             SelectedIndex="{Binding SelectedLineIndex}"
-            SelectedItem="{Binding SelectedItem}" />
+            SelectedItem="{Binding SelectedItem}">
+            <ListView.InputBindings>
+                <KeyBinding
+                    Key="J"
+                    Command="{Binding CursorDownCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="K"
+                    Command="{Binding CursorUpCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="U"
+                    Command="{Binding CursorPageUpCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="D"
+                    Command="{Binding CursorPageDownCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="H"
+                    Command="{Binding CursorPageUpCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="L"
+                    Command="{Binding CursorPageDownCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="N"
+                    Command="{Binding JumpToNextMarkCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}" />
+
+                <KeyBinding
+                    Key="N"
+                    Command="{Binding JumpToPrevMarkCommand}"
+                    CommandParameter="{Binding ElementName=FileListView}"
+                    Modifiers="Shift" />
+
+                <KeyBinding Key="I" Command="{Binding ToggleIgnoreFileCommand}" />
+
+                <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
+
+            </ListView.InputBindings>
+        </ListView>
 
         <StatusBar Grid.Row="3" VerticalAlignment="Bottom">
             <StatusBarItem Content="{StaticResource ResourceKey=StatusBarContents}" />
