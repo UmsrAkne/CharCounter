@@ -11,7 +11,7 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Prism Application";
+        private string title = "CharCounter";
         private ObservableCollection<LineText> texts = new ObservableCollection<LineText>();
         private LineText selectedItem;
         private int selectedLineIndex;
