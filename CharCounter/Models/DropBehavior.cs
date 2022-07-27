@@ -1,5 +1,6 @@
 ﻿namespace CharCounter.Models
 {
+    using System.IO;
     using System.Linq;
     using System.Windows;
     using CharCounter.ViewModels;
@@ -35,6 +36,7 @@
                 .ToList();
 
             ((sender as Window).DataContext as MainWindowViewModel).SetTextFile(texts);
+            ((sender as Window).DataContext as MainWindowViewModel).CurrentFileInfo = new FileInfo(files[0]);
         }
 
         private void AssociatedObject_PreviewDragOver(object sender, DragEventArgs e)

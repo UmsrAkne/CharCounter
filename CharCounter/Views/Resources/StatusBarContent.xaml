@@ -23,34 +23,14 @@
 
                 <TextBlock Margin="10,0" Text="/" />
 
-                <TextBlock Text="無視しているファイル数 : " />
-                <TextBlock Text="{Binding IgnoreFileCount}" />
+                <TextBlock Text="カウント最大値 : " />
+                <TextBlock Text="{Binding MaximumCounter}" />
 
                 <TextBlock Margin="10,0" Text="/" />
 
-                <TextBlock Text="マークしているファイル数 : " />
-                <TextBlock Text="{Binding MarkedFileCount}" />
+                <TextBlock Text="編集中のファイル : " />
+                <TextBlock Text="{Binding CurrentFileInfo.FullName}" />
 
-                <TextBlock Margin="10,0" Text="/" />
-
-                <TextBlock Text="無視しているファイル : " />
-
-                <TextBlock>
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IgnoreFileIsVisible}" Value="True">
-                                    <Setter Property="Text" Value="表示" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding IgnoreFileIsVisible}" Value="False">
-                                    <Setter Property="Text" Value="非表示" />
-                                </DataTrigger>
-                            </Style.Triggers>
-
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
             </StackPanel>
 
         </Grid>

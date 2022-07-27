@@ -70,6 +70,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\DownSizeConverter.cs" />
     <Compile Include="Models\DropBehavior.cs" />
     <Compile Include="Models\LineText.cs" />
     <Compile Include="Models\NumberFormatConverter.cs" />

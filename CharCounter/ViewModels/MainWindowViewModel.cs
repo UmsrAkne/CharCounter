@@ -3,7 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.IO;
     using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Windows;
     using System.Windows.Controls;
     using CharCounter.Models;
     using Prism.Commands;
@@ -11,7 +14,7 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Prism Application";
+        private string title = "CharCounter";
         private ObservableCollection<LineText> texts = new ObservableCollection<LineText>();
         private LineText selectedItem;
         private int selectedLineIndex;
@@ -20,6 +23,8 @@
         private int maximumIndex;
         private int markedFileCount;
         private string searchString;
+        private FileInfo currentFileInfo;
+        private int maximumCounter;
 
         public MainWindowViewModel()
         {
@@ -50,6 +55,10 @@
         public int MarkedFileCount { get => markedFileCount; set => SetProperty(ref markedFileCount, value); }
 
         public string SearchString { get => searchString; set => SetProperty(ref searchString, value); }
+
+        public FileInfo CurrentFileInfo { get => currentFileInfo; set => SetProperty(ref currentFileInfo, value); }
+
+        public int MaximumCounter { get => maximumCounter; set => SetProperty(ref maximumCounter, value); }
 
         public int ListViewItemLineHeight => 15;
 
@@ -135,19 +144,16 @@
         public DelegateCommand DisplayIgnoreFileCommand => new DelegateCommand(() =>
         {
             IgnoreFileIsVisible = true;
-            ReloadCommand.Execute();
         });
 
         public DelegateCommand HideIgnoreFileCommand => new DelegateCommand(() =>
         {
             IgnoreFileIsVisible = false;
-            ReloadCommand.Execute();
         });
 
         public DelegateCommand AppendPrefixToIgnoreFilesCommand => new DelegateCommand(() =>
         {
             // doubleFileList.AppendPrefixToIgnoreFiles("ignore");
-            ReloadCommand.Execute();
         });
 
         public DelegateCommand AppendNumberCommand => new DelegateCommand(() =>
@@ -155,24 +161,19 @@
             Texts.ToList().ForEach(t => t.Text = $"{t.Counter.ToString("0000")},{t.Text}");
 
             // doubleFileList.AppendNumber();
-            ReloadCommand.Execute();
         });
 
         public DelegateCommand AppendNumberWithoutIgnoreFileCommand => new DelegateCommand(() =>
         {
             // doubleFileList.AppendNumberWithoutIgnoreFile();
-            ReloadCommand.Execute();
         });
 
         public DelegateCommand ReloadCommand => new DelegateCommand(() =>
         {
-            if (IgnoreFileIsVisible)
+            if (CurrentFileInfo != null)
             {
-                // ExtendFileInfos = new ObservableCollection<ExtendFileInfo>(doubleFileList.GetFiles());
-            }
-            else
-            {
-                // ExtendFileInfos = new ObservableCollection<ExtendFileInfo>(doubleFileList.GetExceptedIgnoreFiles());
+                var reloadedTexts = File.ReadAllLines(CurrentFileInfo.FullName).Select(str => new LineText() { Text = str }).ToList();
+                SetTextFile(reloadedTexts);
             }
         });
 
@@ -181,7 +182,7 @@
             var counter = 0;
             foreach (var text in Texts)
             {
-                if (text.Text.Contains(SearchString))
+                if (Regex.IsMatch(text.Text, SearchString))
                 {
                     text.Counter = ++counter;
                 }
@@ -190,6 +191,13 @@
                     text.Counter = 0;
                 }
             }
+
+            MaximumCounter = counter;
+        });
+
+        public DelegateCommand CopyToClipboardCommand => new DelegateCommand(() =>
+        {
+            Clipboard.SetText(string.Join(Environment.NewLine, Texts.Select(t => t.Text)));
         });
 
         // 基本的にビヘイビアから呼び出される
