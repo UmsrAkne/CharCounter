@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Windows;
     using System.Windows.Controls;
     using CharCounter.Models;
     using Prism.Commands;
@@ -190,6 +191,11 @@
                     text.Counter = 0;
                 }
             }
+        });
+
+        public DelegateCommand CopyToClipboardCommand => new DelegateCommand(() =>
+        {
+            Clipboard.SetText(string.Join(Environment.NewLine, Texts.Select(t => t.Text)));
         });
 
         // 基本的にビヘイビアから呼び出される

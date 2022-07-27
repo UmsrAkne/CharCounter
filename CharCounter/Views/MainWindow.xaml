@@ -58,6 +58,12 @@
             CommandParameter="{Binding ElementName=FileListView}"
             Modifiers="Shift" />
 
+        <KeyBinding
+            Key="C"
+            Command="{Binding CopyToClipboardCommand}"
+            CommandParameter="{Binding ElementName=FileListView}"
+            Modifiers="Ctrl" />
+
         <KeyBinding Key="I" Command="{Binding ToggleIgnoreFileCommand}" />
 
         <KeyBinding Key="M" Command="{Binding ToggleMarkCommand}" />
@@ -100,12 +106,16 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Text="{Binding SearchString}" Grid.Column="0"/>
-            <Button Content="検索・カウント" Grid.Column="1" Margin="10,0" Command="{Binding CharCountCommand}"/>
+            <TextBox Grid.Column="0" Text="{Binding SearchString}" />
+            <Button
+                Grid.Column="1"
+                Margin="10,0"
+                Command="{Binding CharCountCommand}"
+                Content="検索・カウント" />
         </Grid>
 
         <ListView
