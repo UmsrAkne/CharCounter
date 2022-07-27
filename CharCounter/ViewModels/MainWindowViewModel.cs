@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
     using CharCounter.Models;
@@ -182,7 +183,7 @@
             var counter = 0;
             foreach (var text in Texts)
             {
-                if (text.Text.Contains(SearchString))
+                if (Regex.IsMatch(text.Text, SearchString))
                 {
                     text.Counter = ++counter;
                 }
