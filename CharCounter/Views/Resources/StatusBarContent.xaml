@@ -23,6 +23,11 @@
 
                 <TextBlock Margin="10,0" Text="/" />
 
+                <TextBlock Text="カウント最大値 : " />
+                <TextBlock Text="{Binding MaximumCounter}" />
+
+                <TextBlock Margin="10,0" Text="/" />
+
                 <TextBlock Text="編集中のファイル : " />
                 <TextBlock Text="{Binding CurrentFileInfo.FullName}" />
 

@@ -24,6 +24,7 @@
         private int markedFileCount;
         private string searchString;
         private FileInfo currentFileInfo;
+        private int maximumCounter;
 
         public MainWindowViewModel()
         {
@@ -56,6 +57,8 @@
         public string SearchString { get => searchString; set => SetProperty(ref searchString, value); }
 
         public FileInfo CurrentFileInfo { get => currentFileInfo; set => SetProperty(ref currentFileInfo, value); }
+
+        public int MaximumCounter { get => maximumCounter; set => SetProperty(ref maximumCounter, value); }
 
         public int ListViewItemLineHeight => 15;
 
@@ -188,6 +191,8 @@
                     text.Counter = 0;
                 }
             }
+
+            MaximumCounter = counter;
         });
 
         public DelegateCommand CopyToClipboardCommand => new DelegateCommand(() =>
